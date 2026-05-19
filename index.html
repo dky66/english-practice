@@ -97,6 +97,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .chat-in:focus{border-color:#888}
 .chat-send{background:#1a1a1a;color:#fff;border:none;border-radius:10px;padding:9px 16px;font-size:14px;cursor:pointer;white-space:nowrap;flex-shrink:0}
 .chat-send:disabled{opacity:.4;cursor:not-allowed}
+.mic-area{text-align:center;padding:10px 0 0}
+.mic-big{background:#1a1a1a;color:#fff;border:none;border-radius:50px;padding:14px 36px;font-size:15px;font-weight:500;cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:none;transition:background .15s,transform .1s;letter-spacing:.3px}
+.mic-big:active,.mic-big.listening{background:#d93025;transform:scale(1.04)}
+.mic-hint{font-size:12px;color:#aaa;margin-top:7px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
 
 /* ERROR NOTEBOOK */
 .nb-screen{padding:1rem;max-width:700px;margin:0 auto}
@@ -152,8 +157,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div class="chat-role-info" id="chatRoleInfo"></div>
       <div class="chat-msgs" id="chatMsgs"></div>
       <div class="chat-in-area">
-        <textarea class="chat-in" id="chatIn" rows="1" placeholder="用英语输入…（Enter发送，Shift+Enter换行）" onkeydown="chatKey(event)" oninput="autoH(this)"></textarea>
+        <textarea class="chat-in" id="chatIn" rows="1" placeholder="也可以直接打字，Enter 发送…" onkeydown="chatKey(event)" oninput="autoH(this)"></textarea>
         <button class="chat-send" id="sendBtn" onclick="sendChat()">发送</button>
+      </div>
+      <div class="mic-area">
+        <button class="mic-big" id="micBtn"
+          onmousedown="startMic(event)" onmouseup="stopMicAndSend(event)" onmouseleave="stopMicAndSend(event)"
+          ontouchstart="startMic(event)" ontouchend="stopMicAndSend(event)">🎤 按住说话</button>
+        <p class="mic-hint">松开后自动发送 · AI 语音回复</p>
       </div>
     </div>
   </div>
@@ -709,10 +720,19 @@ function removeFromNB(scIdx, vocabIdx) {
 }
 
 function speak(text) {
-  window.speechSynthesis && window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'en-US'; u.rate = 0.88;
-  window.speechSynthesis && window.speechSynthesis.speak(u);
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const doSpeak = () => {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-US'; u.rate = 0.88;
+    window.speechSynthesis.speak(u);
+  };
+  const voices = window.speechSynthesis.getVoices();
+  if (voices.length === 0) {
+    window.speechSynthesis.addEventListener('voiceschanged', doSpeak, { once: true });
+  } else {
+    doSpeak();
+  }
 }
 
 function renderHome() {
@@ -924,6 +944,12 @@ async function sendChat() {
   const btn = document.getElementById('sendBtn');
   btn.disabled = true;
   inp.value = ''; autoH(inp);
+  // 预热语音（在用户手势触发的同步上下文中执行，解锁浏览器自动播放限制）
+  if (window.speechSynthesis) {
+    const primer = new SpeechSynthesisUtterance('');
+    window.speechSynthesis.speak(primer);
+    window.speechSynthesis.cancel();
+  }
   addUserMsg(text);
   chatHistory.push({ role: 'user', content: text });
 
@@ -961,6 +987,7 @@ async function sendChat() {
     chatHistory.push({ role: 'assistant', content: charReply });
     loading.remove();
     addAIMsg(charReply, correction);
+    speak(charReply);
   } catch(e) {
     loading.remove();
     addSysMsg('⚠️ 连接失败：' + e.message + '。请检查网络或 API Key。');
@@ -970,6 +997,64 @@ async function sendChat() {
 
 function chatKey(e) {
   if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); }
+}
+
+let recognition = null;
+let isListening = false;
+let pendingAutoSend = false;
+
+function initSpeech() {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) {
+    addSysMsg('⚠️ 语音功能需要 Chrome 浏览器，请用 Chrome 打开此网页。');
+    return null;
+  }
+  const r = new SR();
+  r.lang = 'en-US';
+  r.continuous = false;
+  r.interimResults = false;
+  r.onresult = (e) => {
+    const text = e.results[0][0].transcript;
+    const inp = document.getElementById('chatIn');
+    inp.value = text;
+    autoH(inp);
+    resetMicBtn();
+    if (pendingAutoSend) {
+      pendingAutoSend = false;
+      setTimeout(() => sendChat(), 150);
+    }
+  };
+  r.onerror = () => resetMicBtn();
+  r.onend = () => resetMicBtn();
+  return r;
+}
+
+function startMic(e) {
+  e.preventDefault();
+  if (isListening) return;
+  if (!recognition) recognition = initSpeech();
+  if (!recognition) return;
+  try {
+    pendingAutoSend = true;
+    recognition.start();
+    isListening = true;
+    const btn = document.getElementById('micBtn');
+    btn.classList.add('listening');
+    btn.textContent = '🔴 松开发送';
+  } catch(err) { resetMicBtn(); }
+}
+
+function stopMicAndSend(e) {
+  if (e) e.preventDefault();
+  if (!isListening) return;
+  isListening = false;
+  try { recognition && recognition.stop(); } catch(err) {}
+}
+
+function resetMicBtn() {
+  isListening = false;
+  const btn = document.getElementById('micBtn');
+  if (btn) { btn.classList.remove('listening'); btn.textContent = '🎤 按住说话'; }
 }
 function autoH(el) {
   el.style.height = 'auto';
