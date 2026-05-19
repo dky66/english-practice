@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>游轮针灸师英语口语练习</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f4f3ef;color:#1a1a1a;min-height:100vh;font-size:16px}
+.header{background:#fff;border-bottom:1px solid #e5e5e0;height:52px;display:flex;align-items:center;padding:0 1rem;gap:10px;position:sticky;top:0;z-index:100}
+.header h1{font-size:15px;font-weight:500;flex:1}
+.back-btn{background:none;border:none;cursor:pointer;font-size:22px;color:#555;line-height:1;padding:4px;display:none}
+.back-btn.on{display:block}
+.btn-nb{background:#1a1a1a;color:#fff;border:none;border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;white-space:nowrap}
+.screen{display:none}
+.screen.on{display:block}
+
+/* HOME */
+.home{padding:1.5rem 1rem;max-width:700px;margin:0 auto}
+.home-h{font-size:20px;font-weight:500;margin-bottom:4px}
+.home-sub{font-size:13px;color:#777;margin-bottom:1.5rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:10px}
+.sc-card{background:#fff;border:1px solid #e5e5e0;border-radius:12px;padding:1rem 1.2rem;cursor:pointer;transition:border-color .15s,transform .1s}
+.sc-card:hover{border-color:#aaa}
+.sc-card:active{transform:scale(.98)}
+.sc-num{font-size:11px;color:#999;font-weight:500;margin-bottom:5px;text-transform:uppercase;letter-spacing:.4px}
+.sc-title{font-size:15px;font-weight:500}
+.sc-en{font-size:12px;color:#888;margin-top:1px}
+.sc-desc{font-size:13px;color:#666;margin-top:6px;line-height:1.5}
+
+/* TABS */
+.sc-hd{background:#fff;border-bottom:1px solid #e5e5e0;padding:1rem 1rem .5rem}
+.sc-hd h2{font-size:17px;font-weight:500}
+.sc-hd p{font-size:13px;color:#777;margin-top:3px}
+.tabs{display:flex;background:#fff;border-bottom:1px solid #e5e5e0;padding:0 1rem;overflow-x:auto;gap:0}
+.tab{padding:11px 16px;font-size:14px;cursor:pointer;border-bottom:2px solid transparent;color:#777;white-space:nowrap;flex-shrink:0}
+.tab.on{color:#1a1a1a;border-bottom-color:#1a1a1a;font-weight:500}
+.panel{display:none;padding:1rem;max-width:700px;margin:0 auto}
+.panel.on{display:block}
+
+/* FLASHCARD */
+.fc-meta{font-size:13px;color:#777;margin-bottom:1rem;display:flex;justify-content:space-between;align-items:center}
+.fc-wrap{perspective:800px;margin-bottom:1.2rem}
+.fc-inner{position:relative;width:100%;height:180px;transform-style:preserve-3d;transition:transform .45s;cursor:pointer}
+.fc-inner.flipped{transform:rotateY(180deg)}
+.fc-face{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem;text-align:center}
+.fc-front{background:#fff;border:1px solid #e5e5e0}
+.fc-back{background:#1a1a1a;color:#fff;transform:rotateY(180deg)}
+.fc-word{font-size:26px;font-weight:500;margin-bottom:8px}
+.fc-hint{font-size:13px;color:#aaa}
+.fc-zh{font-size:22px;font-weight:500;margin-bottom:6px}
+.fc-ex{font-size:13px;color:#ccc;line-height:1.5;font-style:italic}
+.fc-btns{display:flex;gap:10px;justify-content:center;margin-bottom:1rem}
+.fc-wrong{background:#fff;border:1.5px solid #e55;color:#e55;border-radius:10px;padding:10px 28px;font-size:15px;cursor:pointer;font-weight:500}
+.fc-right{background:#1a1a1a;border:1.5px solid #1a1a1a;color:#fff;border-radius:10px;padding:10px 28px;font-size:15px;cursor:pointer;font-weight:500}
+.fc-tts{background:none;border:none;cursor:pointer;font-size:13px;color:#888;margin-top:8px}
+.fc-progress{background:#e8e8e4;border-radius:4px;height:4px;margin-bottom:1.2rem}
+.fc-prog-bar{background:#1a1a1a;height:4px;border-radius:4px;transition:width .3s}
+.fc-done{text-align:center;padding:2rem 1rem;background:#fff;border-radius:14px;border:1px solid #e5e5e0}
+.fc-done h3{font-size:18px;font-weight:500;margin-bottom:8px}
+.fc-done p{font-size:14px;color:#666;margin-bottom:1.2rem}
+.fc-restart{background:#1a1a1a;color:#fff;border:none;border-radius:10px;padding:10px 24px;font-size:14px;cursor:pointer;margin:4px}
+.fc-nb-btn{background:#fff;border:1.5px solid #1a1a1a;border-radius:10px;padding:10px 24px;font-size:14px;cursor:pointer;margin:4px}
+
+/* DIALOGUE */
+.dlg-sel{display:flex;gap:8px;margin-bottom:1.2rem;flex-wrap:wrap}
+.dlg-opt{background:#fff;border:1px solid #e5e5e0;border-radius:8px;padding:7px 14px;font-size:13px;cursor:pointer;color:#555}
+.dlg-opt.on{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.dlg-list{display:flex;flex-direction:column;gap:10px}
+.dlg-line{background:#fff;border:1px solid #e5e5e0;border-radius:10px;padding:12px 14px}
+.dlg-role{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.4px;margin-bottom:5px}
+.dlg-role.you{color:#0a7a50}
+.dlg-role.them{color:#5a4ab0}
+.dlg-en{font-size:14px;line-height:1.65}
+.dlg-zh{font-size:12px;color:#888;margin-top:4px;line-height:1.5}
+.dlg-tts{background:none;border:1px solid #e5e5e0;border-radius:6px;padding:3px 10px;font-size:12px;cursor:pointer;color:#666;margin-top:7px}
+.dlg-tts:hover{background:#f5f5f2}
+
+/* CHAT */
+.chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 220px);min-height:380px}
+.chat-role-info{background:#f0f5ff;border:1px solid #c8d8f5;border-radius:8px;padding:9px 12px;font-size:13px;color:#3355aa;margin-bottom:10px;line-height:1.5}
+.chat-msgs{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-bottom:4px}
+.msg-sys{align-self:center;background:#efefeb;color:#666;font-size:12px;padding:5px 14px;border-radius:20px;max-width:90%;text-align:center;line-height:1.5}
+.msg-user{align-self:flex-end;background:#1a1a1a;color:#fff;border-radius:12px 12px 3px 12px;padding:10px 14px;max-width:82%;font-size:14px;line-height:1.6}
+.msg-ai-wrap{align-self:flex-start;max-width:86%}
+.msg-ai{background:#fff;border:1px solid #e5e5e0;border-radius:12px 12px 12px 3px;padding:10px 14px;font-size:14px;line-height:1.6}
+.correction{margin-top:7px;border-radius:8px;padding:8px 11px;font-size:13px;line-height:1.55}
+.correction.ok{background:#edfaf4;border:1px solid #9decc5;color:#1a7a4a}
+.correction.err{background:#fff5f0;border:1px solid #f5c0a0;color:#7a3010}
+.correction .label{font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.3px;margin-bottom:4px}
+.correction .orig{color:#c05020;text-decoration:line-through;margin-bottom:2px}
+.correction .fix{color:#1a5a3a;margin-bottom:4px}
+.correction .tip{color:#7a4020}
+.ai-tts{background:none;border:none;cursor:pointer;font-size:12px;color:#888;padding:0;margin-top:5px}
+.chat-in-area{padding-top:10px;display:flex;gap:8px;align-items:flex-end}
+.chat-in{flex:1;border:1px solid #e5e5e0;border-radius:10px;padding:9px 13px;font-size:14px;font-family:inherit;resize:none;max-height:110px;outline:none;background:#fff}
+.chat-in:focus{border-color:#888}
+.chat-send{background:#1a1a1a;color:#fff;border:none;border-radius:10px;padding:9px 16px;font-size:14px;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.chat-send:disabled{opacity:.4;cursor:not-allowed}
+
+/* ERROR NOTEBOOK */
+.nb-screen{padding:1rem;max-width:700px;margin:0 auto}
+.nb-screen h2{font-size:18px;font-weight:500;margin-bottom:4px}
+.nb-screen .sub{font-size:13px;color:#777;margin-bottom:1.2rem}
+.nb-empty{text-align:center;padding:3rem 1rem;color:#888;font-size:14px}
+.nb-scenario{margin-bottom:1.5rem}
+.nb-sc-title{font-size:13px;font-weight:500;color:#888;margin-bottom:8px;text-transform:uppercase;letter-spacing:.3px}
+.nb-word{background:#fff;border:1px solid #e5e5e0;border-radius:10px;padding:11px 14px;margin-bottom:7px;display:flex;align-items:flex-start;gap:10px}
+.nb-word-main{flex:1}
+.nb-en{font-size:15px;font-weight:500;margin-bottom:2px}
+.nb-zh{font-size:13px;color:#777;margin-bottom:5px}
+.nb-ex{font-size:13px;color:#555;line-height:1.5;font-style:italic}
+.nb-actions{display:flex;gap:6px;flex-shrink:0}
+.nb-tts{background:none;border:1px solid #e5e5e0;border-radius:6px;padding:4px 8px;font-size:12px;cursor:pointer;color:#666}
+.nb-del{background:none;border:1px solid #f5c0c0;border-radius:6px;padding:4px 8px;font-size:12px;cursor:pointer;color:#c03030}
+.nb-del:hover{background:#fff5f5}
+
+@media(max-width:480px){
+.msg-user,.msg-ai-wrap{max-width:93%}
+.fc-word{font-size:22px}
+.fc-zh{font-size:19px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <button class="back-btn" id="backBtn" onclick="goHome()">←</button>
+  <h1 id="hTitle">🌊 游轮英语口语练习</h1>
+  <button class="btn-nb" onclick="openNB()">📒 错词本</button>
+</div>
+
+<div class="screen on" id="homeScr">
+  <div class="home">
+    <p class="home-h">选择练习场景</p>
+    <p class="home-sub">词汇闪卡 · 对话范本 · AI自由对话（实时纠错）</p>
+    <div class="grid" id="homeGrid"></div>
+  </div>
+</div>
+
+<div class="screen" id="scScr">
+  <div class="sc-hd"><h2 id="scTitle"></h2><p id="scDesc"></p></div>
+  <div class="tabs">
+    <div class="tab" data-tab="fc" onclick="switchTab('fc')">📚 词汇闪卡</div>
+    <div class="tab" data-tab="dlg" onclick="switchTab('dlg')">💬 对话范本</div>
+    <div class="tab" data-tab="chat" onclick="switchTab('chat')">🎯 自由练习</div>
+  </div>
+  <div class="panel" id="panel-fc"></div>
+  <div class="panel" id="panel-dlg"></div>
+  <div class="panel" id="panel-chat">
+    <div class="chat-wrap">
+      <div class="chat-role-info" id="chatRoleInfo"></div>
+      <div class="chat-msgs" id="chatMsgs"></div>
+      <div class="chat-in-area">
+        <textarea class="chat-in" id="chatIn" rows="1" placeholder="用英语输入…（Enter发送，Shift+Enter换行）" onkeydown="chatKey(event)" oninput="autoH(this)"></textarea>
+        <button class="chat-send" id="sendBtn" onclick="sendChat()">发送</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="screen" id="nbScr">
+  <div class="nb-screen">
+    <h2>📒 错词本</h2>
+    <p class="sub">标记为「不认识」的单词，点击🔊听发音，记住后可删除</p>
+    <div id="nbContent"></div>
+  </div>
+</div>
+
+<script>
+const API_KEY = 'sk-9d2a113f1d9f45869ef6efc1605dcd49';
+const API_URL = 'https://api.deepseek.com/chat/completions';
+
+const SCENARIOS = [
+{
+  num:'01', title:'初次接诊', titleEn:'First Consultation', desc:'问好、了解来意、自我介绍',
+  aiRoleZh:'初次到访、有点紧张的英语游客',
+  systemPrompt:`You are a first-time English-speaking cruise passenger at an acupuncture wellness center. You're curious but nervous. You heard about acupuncture from a friend. Respond in TWO sections separated ONLY by the text "---SPLIT---":
+Section 1: Stay in character. Reply naturally (1-3 sentences).
+Section 2: JSON only — if the acupuncturist's English had errors: {"ok":false,"original":"problematic phrase","corrected":"better version","tip":"中文简短说明（20字内）"} — if English was fine: {"ok":true,"msg":"一句简短鼓励（中文）"}`,
+  vocab:[
+    {en:'wellness center',zh:'健康中心',ex:'Welcome to our wellness center.'},
+    {en:'appointment',zh:'预约',ex:'Do you have an appointment?'},
+    {en:'walk-in',zh:'无预约直接来访',ex:'We also accept walk-ins.'},
+    {en:'acupuncturist',zh:'针灸师',ex:'I\'m your acupuncturist today.'},
+    {en:'intake form',zh:'初诊登记表',ex:'Please fill out this intake form.'},
+    {en:'first-time visitor',zh:'初次来访者',ex:'Are you a first-time visitor?'},
+    {en:'health condition',zh:'健康状况',ex:'Any existing health conditions?'},
+    {en:'reassure',zh:'让…放心',ex:'Let me reassure you — it\'s painless.'},
+    {en:'treatment plan',zh:'治疗方案',ex:'We\'ll discuss a treatment plan.'},
+    {en:'session',zh:'一次疗程',ex:'Each session is about 45 minutes.'},
+    {en:'traditional Chinese medicine',zh:'中医',ex:'Acupuncture is part of traditional Chinese medicine.'},
+    {en:'licensed',zh:'持证的',ex:'I\'m a licensed acupuncturist.'},
+    {en:'certified',zh:'有认证的',ex:'All our practitioners are certified.'},
+    {en:'holistic',zh:'整体性的',ex:'We take a holistic approach.'},
+    {en:'non-invasive',zh:'非侵入性的',ex:'Acupuncture is relatively non-invasive.'},
+    {en:'complementary medicine',zh:'辅助医学',ex:'It\'s a form of complementary medicine.'},
+    {en:'nervous',zh:'紧张的',ex:'It\'s normal to feel nervous.'},
+    {en:'curious',zh:'好奇的',ex:'I\'m curious about how it works.'},
+    {en:'recommendation',zh:'推荐',ex:'I came on a recommendation.'},
+    {en:'paperwork',zh:'表格/文件',ex:'There\'s just a little paperwork first.'},
+    {en:'privacy',zh:'隐私',ex:'Your information is kept private.'},
+    {en:'expertise',zh:'专业技能',ex:'She has 10 years of expertise.'},
+    {en:'comfortable',zh:'舒适的',ex:'Please make yourself comfortable.'},
+    {en:'have a seat',zh:'请坐',ex:'Please have a seat over here.'},
+    {en:'in good hands',zh:'交给专业人士了',ex:'You\'re in good hands here.'},
+  ],
+  dialogues:[
+    {title:'对话一：完全不了解针灸的游客',lines:[
+      {r:'you',en:'Good afternoon! Welcome to our wellness center. How can I help you today?',zh:'下午好！欢迎来到我们的健康中心。请问有什么可以帮您？'},
+      {r:'them',en:'Hi, um… I\'m not really sure, honestly. I just walked by and got curious.',zh:'嗨，呃……说实话我也不太确定。我只是路过看到就进来了。'},
+      {r:'you',en:'That\'s perfectly fine! Have you ever tried acupuncture before?',zh:'完全没问题！您之前有没有试过针灸？'},
+      {r:'them',en:'No, never. I don\'t really know what it is, to be honest.',zh:'没有，从来没有。说实话我也不太了解针灸是什么。'},
+      {r:'you',en:'No problem at all. Acupuncture is a form of traditional Chinese medicine. We use very thin needles to stimulate specific points on your body to relieve pain and improve wellbeing.',zh:'完全没问题。针灸是中医的一种形式。我们用非常细的针刺激身体上的特定穴位，以缓解疼痛、改善健康。'},
+      {r:'them',en:'Thin needles? I\'m a bit afraid of needles, actually.',zh:'细针？说实话我有点怕针。'},
+      {r:'you',en:'That\'s very common! These needles are much thinner than the ones used for injections — you\'ll barely feel them. Many people find it deeply relaxing.',zh:'这很常见！这些针比注射用的针细得多——您几乎感觉不到。很多人会觉得非常放松。'},
+      {r:'them',en:'Oh, that\'s reassuring. So what happens next?',zh:'哦，这让我放心多了。那接下来怎么做呢？'},
+      {r:'you',en:'First, I\'d like you to fill out a short intake form, and then we\'ll have a brief consultation to understand what you\'re hoping to address. Does that sound okay?',zh:'首先，请您填写一份简短的初诊表格，然后我们会进行简短咨询，了解您希望解决什么问题。这样可以吗？'},
+    ]},
+    {title:'对话二：被朋友推荐来的游客',lines:[
+      {r:'them',en:'Hi, my friend Sarah said I absolutely have to come here. She had a session yesterday and can\'t stop talking about it.',zh:'嗨，我朋友Sarah说我一定要来这里。她昨天做了一次疗程，一直在说有多好。'},
+      {r:'you',en:'How wonderful! We love hearing that. What are you hoping to work on today?',zh:'太好了！我们很高兴听到这个。您今天希望解决什么问题？'},
+      {r:'them',en:'Mainly stress, I think. This cruise has been great but I\'ve been carrying a lot of tension in my shoulders.',zh:'主要是压力，我想。这次游轮很棒，但我肩膀一直很紧绷。'},
+      {r:'you',en:'Shoulder tension and stress are two of the most common reasons people come to us. Acupuncture is excellent for both.',zh:'肩膀紧绷和压力是人们来找我们最常见的两个原因。针灸对这两者都非常有效。'},
+      {r:'them',en:'Great. How long is a session? I want to make sure I\'m back for dinner.',zh:'太好了。一次疗程多长时间？我想确保能赶回去吃晚饭。'},
+      {r:'you',en:'A standard session is about 50 minutes. You\'ll have plenty of time for dinner. Shall I check our availability?',zh:'标准疗程大约50分钟。您有充足时间吃晚饭。要不要我查一下我们的空档？'},
+      {r:'them',en:'Yes please! And what should I do to prepare?',zh:'好的，麻烦了！我需要做什么准备吗？'},
+      {r:'you',en:'Just make sure you\'ve eaten a light meal beforehand and try to wear comfortable, loose clothing. You\'re all set!',zh:'只要确保事先吃了点东西，并尽量穿宽松舒适的衣服。您准备好了！'},
+    ]},
+    {title:'对话三：已预约来check-in的游客',lines:[
+      {r:'them',en:'Hello, I have a 3 o\'clock appointment. My name is James Wilson, cabin 847.',zh:'你好，我预约了3点。我叫James Wilson，船舱847。'},
+      {r:'you',en:'Welcome, Mr. Wilson! Yes, I have you right here. Have you been to our center before?',zh:'欢迎，Wilson先生！是的，我这里有您的记录。您之前来过我们中心吗？'},
+      {r:'them',en:'Once, about two years ago on a different cruise. It really helped my back at the time.',zh:'来过一次，大约两年前在另一艘游轮上。那次对我的背部很有帮助。'},
+      {r:'you',en:'Excellent. Since you\'re returning, I\'ll just need you to fill out a brief update form — we want to make sure nothing has changed with your health.',zh:'很好。既然您回来了，我只需要您填一份简短的更新表格——我们想确认您的健康状况没有变化。'},
+      {r:'them',en:'Of course. I should mention I started taking a new medication since then.',zh:'当然。我应该提一下，我从那以后开始服用一种新药。'},
+      {r:'you',en:'Thank you for letting me know — that\'s very important. Please write it down on the form, and I\'ll make sure we take it into account during your session.',zh:'感谢您告知我——这非常重要。请在表格上写下来，我会确保在您的疗程中加以考虑。'},
+    ]},
+  ]
+},
+{
+  num:'02', title:'问诊病史采集', titleEn:'Medical History', desc:'询问症状、病史、用药、过敏情况',
+  aiRoleZh:'有不同健康问题的游轮乘客',
+  systemPrompt:`You are an English-speaking cruise passenger with health complaints visiting an acupuncturist for the first time. You have lower back pain from sitting too long, occasional headaches, and mild insomnia. You take lisinopril (blood pressure). No known allergies. Respond in TWO sections separated ONLY by "---SPLIT---":
+Section 1: Stay in character. Answer the acupuncturist's questions naturally (1-3 sentences).
+Section 2: JSON only — if errors: {"ok":false,"original":"phrase","corrected":"better","tip":"中文说明"} — if fine: {"ok":true,"msg":"鼓励"}`,
+  vocab:[
+    {en:'chief complaint',zh:'主诉/主要问题',ex:'What\'s your chief complaint today?'},
+    {en:'symptom',zh:'症状',ex:'How long have you had this symptom?'},
+    {en:'chronic pain',zh:'慢性疼痛',ex:'Is it chronic pain or recent?'},
+    {en:'acute pain',zh:'急性疼痛',ex:'This feels more like acute pain.'},
+    {en:'onset',zh:'发病/开始时间',ex:'When was the onset of your pain?'},
+    {en:'duration',zh:'持续时间',ex:'What\'s the duration of the discomfort?'},
+    {en:'scale of 1 to 10',zh:'1到10分疼痛评级',ex:'Rate your pain on a scale of 1 to 10.'},
+    {en:'aggravated by',zh:'因…加重',ex:'Is it aggravated by movement?'},
+    {en:'relieved by',zh:'因…缓解',ex:'Is it relieved by rest?'},
+    {en:'radiating pain',zh:'放射性疼痛',ex:'Is there any radiating pain down the leg?'},
+    {en:'medication',zh:'药物',ex:'Are you taking any medication?'},
+    {en:'prescription',zh:'处方药',ex:'Is that a prescription medication?'},
+    {en:'over-the-counter',zh:'非处方药',ex:'I take some over-the-counter painkillers.'},
+    {en:'allergy',zh:'过敏',ex:'Do you have any allergies?'},
+    {en:'blood pressure',zh:'血压',ex:'Do you have high blood pressure?'},
+    {en:'diabetes',zh:'糖尿病',ex:'Do you have diabetes?'},
+    {en:'heart condition',zh:'心脏病',ex:'Any history of heart condition?'},
+    {en:'pacemaker',zh:'心脏起搏器',ex:'Do you have a pacemaker?'},
+    {en:'metal implant',zh:'金属植入物',ex:'Do you have any metal implants?'},
+    {en:'blood thinner',zh:'血液稀释剂',ex:'Are you on any blood thinners?'},
+    {en:'pregnant',zh:'怀孕的',ex:'Are you pregnant or trying to conceive?'},
+    {en:'previous surgery',zh:'过往手术',ex:'Have you had any previous surgery?'},
+    {en:'sleep quality',zh:'睡眠质量',ex:'How is your sleep quality lately?'},
+    {en:'stress level',zh:'压力水平',ex:'What\'s your stress level like?'},
+    {en:'lifestyle',zh:'生活方式',ex:'Tell me a bit about your lifestyle.'},
+  ],
+  dialogues:[
+    {title:'对话一：慢性腰痛患者',lines:[
+      {r:'you',en:'So, what brings you in today?',zh:'那么，您今天来是为了什么？'},
+      {r:'them',en:'I\'ve been dealing with lower back pain for about three months now. It\'s really affecting my daily life.',zh:'我已经有腰痛大概三个月了。真的影响到我的日常生活了。'},
+      {r:'you',en:'I understand. On a scale of 1 to 10, how would you rate the pain right now?',zh:'我明白。以1到10分来评级，您现在的疼痛是几分？'},
+      {r:'them',en:'I\'d say about a 6. It gets worse if I sit for a long time — like on the plane here.',zh:'我会说大概6分。如果久坐会加重——比如来这里坐飞机的时候。'},
+      {r:'you',en:'Is the pain in one specific spot, or does it radiate down your leg at all?',zh:'疼痛是集中在一个特定位置，还是有向腿部放射的感觉？'},
+      {r:'them',en:'Mostly in the lower back, but sometimes it goes down the left leg a little.',zh:'主要在下背部，但有时候会稍微放射到左腿。'},
+      {r:'you',en:'Are you currently taking any medications for the pain or for anything else?',zh:'您目前有在服用任何止痛药或其他药物吗？'},
+      {r:'them',en:'I take ibuprofen when it\'s bad, and I\'m also on lisinopril for blood pressure.',zh:'疼痛严重时我会吃布洛芬，我也在服用赖诺普利控制血压。'},
+      {r:'you',en:'Thank you. Do you have a pacemaker or any metal implants in your body?',zh:'谢谢您。您有心脏起搏器或身体内有金属植入物吗？'},
+      {r:'them',en:'No, nothing like that.',zh:'没有，没有那些。'},
+      {r:'you',en:'And any allergies to medications or metals that you know of?',zh:'您有任何已知的药物或金属过敏吗？'},
+      {r:'them',en:'Not that I\'m aware of, no.',zh:'我不知道有，没有。'},
+    ]},
+    {title:'对话二：失眠和焦虑患者',lines:[
+      {r:'them',en:'I\'ve been having terrible sleep. I lie awake for hours just worrying about everything.',zh:'我一直睡得很差。我会躺着几个小时，担心各种事情。'},
+      {r:'you',en:'That sounds exhausting. How long has this been going on?',zh:'听起来很累。这种情况持续多久了？'},
+      {r:'them',en:'About six months. I\'ve tried everything — melatonin, relaxation apps, nothing works.',zh:'大概六个月。我什么都试过了——褪黑素、放松App，什么都没用。'},
+      {r:'you',en:'Acupuncture can be very effective for insomnia and anxiety. Do you have any physical symptoms along with the sleep issues?',zh:'针灸对失眠和焦虑非常有效。除了睡眠问题，您还有其他身体症状吗？'},
+      {r:'them',en:'Yes, I get tension headaches almost every day, and my shoulders are constantly tight.',zh:'有的，我几乎每天都有紧张性头痛，而且肩膀一直很紧绷。'},
+      {r:'you',en:'I see. Are you taking anything for the headaches or anxiety?',zh:'我明白了。您有在服用任何头痛或焦虑的药物吗？'},
+      {r:'them',en:'Just some over-the-counter painkillers for the headaches. No prescription meds.',zh:'头痛时只吃非处方止痛药。没有处方药。'},
+      {r:'you',en:'Good. And how would you describe your overall stress level on a scale of 1 to 10?',zh:'好的。以1到10分来描述，您的整体压力水平是几分？'},
+      {r:'them',en:'Honestly? A solid 8. Work has been really overwhelming.',zh:'说实话？实实在在的8分。工作一直让我感到很大压力。'},
+    ]},
+    {title:'对话三：运动损伤患者',lines:[
+      {r:'them',en:'I hurt my shoulder playing tennis about two weeks ago. The doctor said it\'s a rotator cuff strain.',zh:'我大约两周前打网球时伤了肩膀。医生说是旋转肌腱劳损。'},
+      {r:'you',en:'I\'m sorry to hear that. Is the pain constant, or only when you move the shoulder?',zh:'很抱歉听到这个。疼痛是持续性的，还是只在活动肩膀时才有？'},
+      {r:'them',en:'Mostly when I move it — especially lifting my arm above my head.',zh:'主要是活动时——特别是把手臂举过头顶的时候。'},
+      {r:'you',en:'On a scale of 1 to 10?',zh:'以1到10分来评级呢？'},
+      {r:'them',en:'About a 5 resting, maybe a 7 or 8 when I try to reach for something.',zh:'休息时大概5分，当我试图够东西的时候可能7到8分。'},
+      {r:'you',en:'Have you had any imaging done — an X-ray or MRI?',zh:'您有做过影像检查吗——X光或MRI？'},
+      {r:'them',en:'An ultrasound. No tears, just inflammation and strain.',zh:'做过超声波。没有撕裂，只是炎症和劳损。'},
+      {r:'you',en:'Acupuncture can help significantly with both inflammation and the surrounding muscle tension. Are you taking any anti-inflammatory medication?',zh:'针灸对炎症和周围肌肉紧张都很有帮助。您有在服用任何消炎药吗？'},
+      {r:'them',en:'I was on naproxen for the first week, but I\'ve stopped it now.',zh:'我在第一周服用了萘普生，但现在已经停了。'},
+    ]},
+  ]
+},
+{
+  num:'03', title:'解释针灸疗法', titleEn:'Explaining Acupuncture', desc:'介绍原理、消除顾虑、设定预期',
+  aiRoleZh:'对针灸好奇但有顾虑的游轮乘客',
+  systemPrompt:`You are an English-speaking cruise passenger who is curious but has concerns about acupuncture. You ask realistic questions first-timers ask. Respond in TWO sections separated ONLY by "---SPLIT---":
+Section 1: Stay in character. Ask questions or react naturally (1-3 sentences).
+Section 2: JSON — if errors: {"ok":false,"original":"phrase","corrected":"better","tip":"中文说明"} — if fine: {"ok":true,"msg":"鼓励"}`,
+  vocab:[
+    {en:'meridian',zh:'经络',ex:'Qi flows along meridians in the body.'},
+    {en:'acupuncture point',zh:'穴位',ex:'I\'ll target specific acupuncture points.'},
+    {en:'Qi (energy flow)',zh:'气（能量流动）',ex:'Acupuncture restores the balance of Qi.'},
+    {en:'hair-thin needle',zh:'发丝细的针',ex:'The needles are hair-thin.'},
+    {en:'sterile',zh:'无菌的',ex:'All needles are sterile and disposable.'},
+    {en:'disposable',zh:'一次性的',ex:'We use disposable needles every time.'},
+    {en:'stimulate',zh:'刺激',ex:'The needles stimulate specific points.'},
+    {en:'nervous system',zh:'神经系统',ex:'It signals the nervous system.'},
+    {en:'endorphin',zh:'内啡肽',ex:'It triggers the release of endorphins.'},
+    {en:'de qi sensation',zh:'得气感',ex:'You may feel a de qi sensation.'},
+    {en:'tingling',zh:'刺痛/麻麻的感觉',ex:'Some people feel tingling.'},
+    {en:'heaviness',zh:'沉重感',ex:'Others describe a heaviness.'},
+    {en:'warmth',zh:'温热感',ex:'You might feel warmth around the needle.'},
+    {en:'circulation',zh:'血液循环',ex:'It promotes blood circulation.'},
+    {en:'inflammation',zh:'炎症',ex:'It can help reduce inflammation.'},
+    {en:'side effect',zh:'副作用',ex:'Side effects are very rare.'},
+    {en:'bruising',zh:'瘀伤',ex:'Slight bruising is possible.'},
+    {en:'soreness',zh:'酸痛',ex:'Some soreness after is normal.'},
+    {en:'treatment course',zh:'疗程',ex:'A full treatment course is 6-8 sessions.'},
+    {en:'frequency',zh:'频率',ex:'We recommend twice a week at first.'},
+    {en:'evidence-based',zh:'有科学依据的',ex:'Acupuncture is evidence-based.'},
+    {en:'safe',zh:'安全的',ex:'It\'s completely safe when done properly.'},
+    {en:'effective',zh:'有效的',ex:'Many patients find it very effective.'},
+    {en:'anxiety',zh:'焦虑',ex:'It can help reduce anxiety.'},
+    {en:'pain relief',zh:'止痛',ex:'Many seek it for pain relief.'},
+  ],
+  dialogues:[
+    {title:'对话一：担心疼痛的游客',lines:[
+      {r:'you',en:'Before we start, do you have any questions about the treatment?',zh:'开始之前，您对治疗有任何问题吗？'},
+      {r:'them',en:'Yes — will it hurt? I\'m honestly terrified of needles.',zh:'有——会疼吗？说实话我非常怕针。'},
+      {r:'you',en:'That\'s the number one concern people have! The good news is, these needles are nothing like injection needles. They\'re hair-thin — about the diameter of a strand of your hair.',zh:'这是大家最常见的顾虑！好消息是，这些针和注射针完全不同。它们细如发丝——大概和您头发的直径差不多。'},
+      {r:'them',en:'Really? So it doesn\'t hurt at all?',zh:'真的吗？所以完全不疼？'},
+      {r:'you',en:'Most people feel very little or nothing. You might feel a slight pressure or what we call "de qi" — a mild tingling or heaviness. That\'s actually a good sign — it means the point is activated.',zh:'大多数人感觉很轻微或什么都感觉不到。您可能会感到轻微的压力，或我们称之为"得气"的感觉——一种轻微的刺痛或沉重感。这实际上是个好迹象——说明穴位被激活了。'},
+      {r:'them',en:'Okay… and what if I can\'t handle it and want you to stop?',zh:'好的……如果我受不了，想让您停下来怎么办？'},
+      {r:'you',en:'Absolutely no problem. You are in control at all times. Just say "stop" and I\'ll remove the needles immediately. There\'s no pressure here.',zh:'完全没问题。您随时都有控制权。只需说"停"，我会立刻取出针。这里没有任何压力。'},
+      {r:'them',en:'That makes me feel a lot better. Thank you.',zh:'这让我感觉好多了。谢谢您。'},
+    ]},
+    {title:'对话二：问科学原理的游客',lines:[
+      {r:'them',en:'I\'m a bit skeptical, to be honest. Is there actual science behind acupuncture?',zh:'说实话，我有点怀疑。针灸有真正的科学依据吗？'},
+      {r:'you',en:'That\'s a fair question. There is a growing body of scientific research supporting acupuncture. Studies show it stimulates the nervous system and triggers the release of natural painkillers called endorphins.',zh:'这是个好问题。越来越多的科学研究支持针灸。研究表明针灸刺激神经系统，并触发释放称为内啡肽的天然止痛物质。'},
+      {r:'them',en:'So it\'s not just a placebo effect?',zh:'所以这不只是安慰剂效应？'},
+      {r:'you',en:'The evidence suggests it goes beyond placebo. The World Health Organization recognizes acupuncture as effective for over 100 conditions, including chronic pain, headaches, and anxiety.',zh:'证据表明它超出了安慰剂效应。世界卫生组织承认针灸对100多种疾病有效，包括慢性疼痛、头痛和焦虑。'},
+      {r:'them',en:'That\'s actually more than I expected. What about the traditional Chinese explanation — meridians and Qi?',zh:'这比我预期的要多。那中医的解释——经络和气——呢？'},
+      {r:'you',en:'Traditional Chinese medicine explains it in terms of Qi flowing along meridians — energy pathways in the body. Modern science maps these to nerve pathways and connective tissue. Both frameworks lead to the same result.',zh:'中医用气沿经络——身体内的能量通道——流动来解释。现代科学将其对应到神经通路和结缔组织。两种框架得出同样的结果。'},
+      {r:'them',en:'Interesting. I\'ll keep an open mind and give it a try.',zh:'有意思。我会保持开放的心态，试一试。'},
+    ]},
+    {title:'对话三：问疗效和疗程的游客',lines:[
+      {r:'them',en:'How quickly will I see results? I\'m only on this cruise for another four days.',zh:'我多快会看到效果？我在这艘游轮上只剩四天了。'},
+      {r:'you',en:'Many people notice improvement after just one or two sessions, especially for acute issues like tension or stress. For chronic conditions, it usually takes a few more sessions.',zh:'很多人仅仅一两次疗程后就注意到改善，尤其是对于紧张或压力等急性问题。对于慢性疾病，通常需要更多疗程。'},
+      {r:'them',en:'So I might actually feel better before the cruise ends?',zh:'所以我可能在游轮行程结束前就会感觉好些了？'},
+      {r:'you',en:'Absolutely — especially for your shoulder tension. I\'d recommend two or three sessions over the next four days to really maximize the benefit.',zh:'当然——尤其是对于您的肩膀紧张。我建议在接下来的四天内进行两到三次疗程，以真正最大化效果。'},
+      {r:'them',en:'Are there any side effects I should know about?',zh:'有什么我应该了解的副作用吗？'},
+      {r:'you',en:'Side effects are very mild and rare. Some people experience slight soreness or a small bruise at the needle site, which fades within a day or two. You may also feel deeply relaxed or a little tired afterwards — that\'s your body healing.',zh:'副作用非常轻微且罕见。有些人会在针孔处感到轻微酸痛或出现小瘀伤，会在一两天内消退。您之后也可能感到深度放松或有点疲倦——那是您的身体在愈合。'},
+    ]},
+  ]
+},
+{
+  num:'04', title:'治疗过程中', titleEn:'During Treatment', desc:'指引动作、询问感受、安抚情绪',
+  aiRoleZh:'正躺在治疗床上的乘客',
+  systemPrompt:`You are an English-speaking cruise passenger lying on the acupuncture table receiving treatment. You experience various sensations and have questions or comments. Respond in TWO sections separated ONLY by "---SPLIT---":
+Section 1: Stay in character. React to the acupuncturist's instructions or ask questions (1-3 sentences).
+Section 2: JSON — if errors: {"ok":false,"original":"phrase","corrected":"better","tip":"中文说明"} — if fine: {"ok":true,"msg":"鼓励"}`,
+  vocab:[
+    {en:'lie face down',zh:'俯卧/趴下',ex:'Please lie face down on the table.'},
+    {en:'lie face up',zh:'仰卧/躺下',ex:'Now lie face up, please.'},
+    {en:'face cradle',zh:'面部托架',ex:'Rest your face in the face cradle.'},
+    {en:'prone position',zh:'俯卧位',ex:'Stay in the prone position.'},
+    {en:'supine position',zh:'仰卧位',ex:'I\'ll put you in the supine position now.'},
+    {en:'drape',zh:'盖布/遮盖',ex:'I\'ll drape this sheet over you.'},
+    {en:'insert',zh:'插入',ex:'I\'m going to insert the needle now.'},
+    {en:'retain',zh:'留置',ex:'I\'ll retain the needles for 20 minutes.'},
+    {en:'remove',zh:'取出',ex:'I\'m removing the needle now.'},
+    {en:'de qi',zh:'得气',ex:'That sensation is called de qi.'},
+    {en:'tingling',zh:'刺痛/麻感',ex:'Do you feel any tingling?'},
+    {en:'heaviness',zh:'沉重感',ex:'Some people feel heaviness.'},
+    {en:'twitch response',zh:'肌肉抽动反应',ex:'The twitch response is normal.'},
+    {en:'muscle spasm',zh:'肌肉痉挛',ex:'You may feel a brief muscle spasm.'},
+    {en:'discomfort',zh:'不适',ex:'Tell me if you feel any discomfort.'},
+    {en:'sharp pain',zh:'刺痛',ex:'Sharp pain is not normal.'},
+    {en:'tolerable',zh:'可以忍受的',ex:'Is the sensation tolerable?'},
+    {en:'breathe deeply',zh:'深呼吸',ex:'Breathe deeply and slowly.'},
+    {en:'stay still',zh:'保持不动',ex:'Try to stay as still as possible.'},
+    {en:'relax your muscles',zh:'放松肌肉',ex:'Try to relax the muscles in your back.'},
+    {en:'peaceful',zh:'平静的',ex:'Just focus on breathing and stay peaceful.'},
+    {en:'timer',zh:'计时器',ex:'I\'ll set a timer for 20 minutes.'},
+    {en:'call out',zh:'出声叫我',ex:'Just call out if you need me.'},
+    {en:'dim the lights',zh:'调暗灯光',ex:'I\'ll dim the lights for you.'},
+    {en:'blanket',zh:'毯子',ex:'Would you like a blanket?'},
+  ],
+  dialogues:[
+    {title:'对话一：第一次、有点紧张的患者',lines:[
+      {r:'you',en:'Alright, please lie face down on the table and rest your face in the cradle. Make yourself comfortable.',zh:'好的，请俯卧在治疗床上，把脸放在面部托架里。让自己舒服。'},
+      {r:'them',en:'Like this? Is the sheet supposed to cover me?',zh:'像这样吗？床单应该盖住我吗？'},
+      {r:'you',en:'Perfect position. I\'ll drape the sheet over your lower half for comfort and privacy. Just take a slow, deep breath and try to relax your muscles.',zh:'位置很好。我会把床单盖在您的下半身，以保持舒适和隐私。慢慢深呼吸，试着放松肌肉。'},
+      {r:'them',en:'Okay… I\'m trying. I\'m a bit tense, I think.',zh:'好的……我在尝试。我觉得我有点紧张。'},
+      {r:'you',en:'That\'s completely normal for the first time. I\'m going to place the first needle now — just breathe out slowly as I do. Ready?',zh:'第一次这样完全正常。我现在要放入第一根针——我放的时候慢慢呼出。准备好了吗？'},
+      {r:'them',en:'Okay… oh! I felt something. Like a dull ache.',zh:'好的……哦！我感到了什么。像一种隐痛。'},
+      {r:'you',en:'That\'s exactly what we want — that\'s the de qi sensation. It means the needle is in the right point. The feeling usually fades within a few seconds.',zh:'这正是我们想要的——这就是得气感。说明针刺到了正确的穴位。这种感觉通常在几秒内消退。'},
+      {r:'them',en:'Oh wow, it\'s actually fading already. That\'s not bad at all.',zh:'哇，它真的已经在消退了。这还好嘛。'},
+      {r:'you',en:'I\'ll set a timer for 20 minutes. The lights will be dimmed. Just rest and breathe. I\'ll check on you in a few minutes. Call out if you need anything.',zh:'我会设置20分钟的计时器。灯光会调暗。只需休息和呼吸。我会几分钟后来看您。如果需要什么就出声叫我。'},
+    ]},
+    {title:'对话二：治疗中问问题的患者',lines:[
+      {r:'them',en:'How many needles are you putting in? I\'m trying to count but I can\'t feel most of them.',zh:'您放了多少根针？我在试着数，但大多数我感觉不到。'},
+      {r:'you',en:'I\'ve put in 12 so far, mainly along your upper back and shoulders. I\'ll add three more along your neck.',zh:'到目前为止我放了12根，主要在您的上背部和肩膀。我还会在颈部再加三根。'},
+      {r:'them',en:'My left shoulder feels really heavy right now. Is that normal?',zh:'我左肩现在感觉非常沉重。这正常吗？'},
+      {r:'you',en:'Yes, heaviness is one of the classic de qi sensations — it actually means your muscles are releasing tension. That\'s a great sign.',zh:'是的，沉重感是经典得气感之一——这实际上意味着您的肌肉正在释放紧张。这是个好迹象。'},
+      {r:'them',en:'I also feel kind of warm around the needle in my lower back.',zh:'我下背部的针周围也感到有点温热。'},
+      {r:'you',en:'Warmth is another positive response — it indicates increased blood circulation in that area. Just relax into those sensations. They\'re all working for you.',zh:'温热感是另一个积极反应——说明该区域血液循环增加了。只需放松感受这些感觉。它们都在为您发挥作用。'},
+    ]},
+    {title:'对话三：治疗中感到不适的患者',lines:[
+      {r:'them',en:'Excuse me… one of the needles on my right leg feels really sharp. Not like the others.',zh:'打扰一下……我右腿上的一根针感觉非常刺痛。和其他的不一样。'},
+      {r:'you',en:'Thank you for telling me right away. I\'ll adjust it immediately. Sharp, stinging pain is not what we want.',zh:'谢谢您立刻告诉我。我马上调整。刺痛感不是我们想要的。'},
+      {r:'them',en:'Oh, that\'s much better now. What happened?',zh:'哦，现在好多了。是怎么了？'},
+      {r:'you',en:'The needle was very slightly off-angle. That can occasionally happen. I\'ve repositioned it and everything looks good now. How does it feel?',zh:'针的角度稍微偏了一点。这偶尔会发生。我已经重新调整了，现在一切看起来很好。感觉怎么样？'},
+      {r:'them',en:'Much better. Just the dull heaviness like the other ones.',zh:'好多了。只是像其他的一样有沉重感。'},
+      {r:'you',en:'Perfect. Please always tell me immediately if anything feels sharp or burning — it\'s important and I can always make an adjustment.',zh:'很好。如果有任何刺痛或灼热感，请立刻告诉我——这很重要，我随时可以做调整。'},
+    ]},
+  ]
+},
+{
+  num:'05', title:'治疗后指导', titleEn:'Post-Treatment Care', desc:'注意事项、饮食建议、复诊安排',
+  aiRoleZh:'刚完成治疗、想了解注意事项的乘客',
+  systemPrompt:`You are an English-speaking cruise passenger who just finished an acupuncture session. You feel relaxed but have questions about aftercare and what to expect. Respond in TWO sections separated ONLY by "---SPLIT---":
+Section 1: Stay in character. Ask questions or react naturally (1-3 sentences).
+Section 2: JSON — if errors: {"ok":false,"original":"phrase","corrected":"better","tip":"中文说明"} — if fine: {"ok":true,"msg":"鼓励"}`,
+  vocab:[
+    {en:'stay hydrated',zh:'保持水分',ex:'Please stay hydrated after treatment.'},
+    {en:'avoid alcohol',zh:'避免饮酒',ex:'Avoid alcohol for 24 hours.'},
+    {en:'strenuous exercise',zh:'剧烈运动',ex:'Avoid strenuous exercise today.'},
+    {en:'hot bath',zh:'热水澡',ex:'Avoid a hot bath for a few hours.'},
+    {en:'sauna',zh:'桑拿',ex:'Skip the sauna today.'},
+    {en:'fatigue',zh:'疲劳',ex:'Some fatigue after treatment is normal.'},
+    {en:'soreness',zh:'酸痛',ex:'Mild soreness is a healing response.'},
+    {en:'bruising',zh:'瘀伤',ex:'Small bruises fade in a day or two.'},
+    {en:'healing response',zh:'愈合反应',ex:'This is a normal healing response.'},
+    {en:'follow-up session',zh:'复诊疗程',ex:'I\'d recommend a follow-up session.'},
+    {en:'treatment plan',zh:'治疗计划',ex:'We can create a treatment plan.'},
+    {en:'every other day',zh:'每隔一天',ex:'Come every other day for best results.'},
+    {en:'cumulative effect',zh:'累积效果',ex:'The benefits are cumulative.'},
+    {en:'light meal',zh:'清淡饮食',ex:'Eat a light meal after treatment.'},
+    {en:'cold food',zh:'寒凉食物',ex:'Avoid cold food and drinks.'},
+    {en:'realistic expectation',zh:'现实的预期',ex:'Let\'s set some realistic expectations.'},
+    {en:'maintenance session',zh:'维护疗程',ex:'Monthly maintenance sessions help.'},
+    {en:'improvement',zh:'改善',ex:'Most patients see steady improvement.'},
+    {en:'progress',zh:'进展',ex:'We\'ll track your progress.'},
+    {en:'long-term',zh:'长期的',ex:'For long-term results, be consistent.'},
+    {en:'spicy food',zh:'辛辣食物',ex:'Avoid spicy food today.'},
+    {en:'take it easy',zh:'放轻松/不要过度活动',ex:'Take it easy for the rest of the day.'},
+    {en:'drink plenty of water',zh:'多喝水',ex:'Please drink plenty of water today.'},
+    {en:'notice changes',zh:'注意变化',ex:'Notice any changes in your symptoms.'},
+    {en:'reach out',zh:'联系我',ex:'Reach out if you have any concerns.'},
+  ],
+  dialogues:[
+    {title:'对话一：第一次治疗后',lines:[
+      {r:'you',en:'How are you feeling? Take your time sitting up — don\'t rush.',zh:'您感觉怎么样？慢慢坐起来——不要着急。'},
+      {r:'them',en:'Wow, I feel incredibly relaxed. Almost a little floaty. Is that normal?',zh:'哇，我感觉非常放松。几乎有点飘飘然。这正常吗？'},
+      {r:'you',en:'Very normal — some people describe it as a "treatment high." Your nervous system has just had a deep reset. Enjoy it!',zh:'非常正常——有些人把它描述为"治疗后的愉悦感"。您的神经系统刚刚经历了深度重置。享受吧！'},
+      {r:'them',en:'I also feel a bit tired. Should I be worried?',zh:'我也感到有点疲倦。我应该担心吗？'},
+      {r:'you',en:'Not at all. Fatigue after the first session is very common — it means your body is healing. I\'d actually suggest taking it easy for the rest of the day.',zh:'完全不用。第一次疗程后的疲倦非常常见——说明您的身体正在愈合。我实际上建议您今天剩下的时间放轻松。'},
+      {r:'them',en:'Good to know. Is there anything I absolutely shouldn\'t do today?',zh:'很好知道。今天有什么我绝对不应该做的吗？'},
+      {r:'you',en:'Please drink plenty of water throughout the day. Also, avoid alcohol and strenuous exercise for 24 hours, and skip the sauna or hot tub if you can.',zh:'请全天多喝水。同时在24小时内避免饮酒和剧烈运动，如果可以的话也避免桑拿或热水浴。'},
+      {r:'them',en:'Oh, we have a wine tasting tonight! Can I skip the alcohol advice just this once?',zh:'哦，我们今晚有品酒活动！我可以就这一次不听酒精的建议吗？'},
+      {r:'you',en:'I understand! You can have a little wine, but try to keep it to one glass and drink extra water alongside it. Your body will thank you tomorrow.',zh:'我理解！您可以喝一点葡萄酒，但尽量只喝一杯，同时喝更多水。明天您的身体会感谢您的。'},
+    ]},
+    {title:'对话二：有瘀青/酸痛的患者',lines:[
+      {r:'them',en:'I noticed a tiny bruise near one of the needle sites this morning. Is something wrong?',zh:'我今天早上注意到一个针孔附近有个小瘀伤。是有什么问题吗？'},
+      {r:'you',en:'Please don\'t worry — that\'s a completely normal and common reaction. It just means a tiny capillary was near the needle site. It will fade within a day or two.',zh:'请不要担心——这是完全正常且常见的反应。只是意味着针孔附近有一个小毛细血管。它会在一两天内消退。'},
+      {r:'them',en:'I\'m also a bit sore in the spots where you put the needles. Like a mild ache.',zh:'我在您放针的地方也有点酸痛。像一种轻微的疼痛。'},
+      {r:'you',en:'That\'s also perfectly normal — it\'s called a healing response. Your muscles are processing the treatment. It should ease up within 24 hours.',zh:'这也是完全正常的——被称为愈合反应。您的肌肉正在处理治疗效果。应该在24小时内缓解。'},
+      {r:'them',en:'Should I put heat on it or ice on it?',zh:'我应该热敷还是冰敷？'},
+      {r:'you',en:'I\'d actually recommend neither for now. Just let your body do its work. If the soreness is still significant after 48 hours, you can apply gentle warmth then.',zh:'我实际上建议现在两者都不要用。只需让您的身体自行运作。如果48小时后酸痛仍然明显，那时可以轻柔地温热敷。'},
+    ]},
+    {title:'对话三：询问疗效时间的患者',lines:[
+      {r:'them',en:'I came in for my back pain. I don\'t really feel much different yet. Should I be concerned?',zh:'我来是为了背痛。我感觉还没什么不同。我应该担心吗？'},
+      {r:'you',en:'That\'s completely understandable, and it\'s actually very common after the first session. Acupuncture works cumulatively — the benefits build up over multiple sessions.',zh:'这完全可以理解，第一次疗程后这实际上非常常见。针灸效果是累积的——效益随多次疗程逐渐积累。'},
+      {r:'them',en:'So how many sessions before I might notice a difference?',zh:'那我大概需要几次疗程才能注意到改变？'},
+      {r:'you',en:'Most patients with chronic back pain start noticing real improvement by the third or fourth session. Some notice it sooner. I\'d like to set a realistic goal of three sessions and then reassess.',zh:'大多数慢性背痛患者在第三或第四次疗程时开始注意到真正的改善。有些人更快。我想设定三次疗程的现实目标，然后重新评估。'},
+      {r:'them',en:'That\'s fair. Is there anything I can do between sessions to help?',zh:'这很合理。两次疗程之间我能做什么来帮助效果吗？'},
+      {r:'you',en:'Yes — stay hydrated, avoid cold food and drinks, try to reduce stress, and do some gentle stretching. Also, notice any changes in your symptoms, even small ones, and tell me at your next visit.',zh:'可以——保持水分，避免寒凉食物和饮品，尽量减少压力，做一些轻柔的伸展运动。另外，注意症状的任何变化，即使是小的变化，在下次就诊时告诉我。'},
+    ]},
+  ]
+},
+{
+  num:'06', title:'预约 & 收费', titleEn:'Appointment & Billing', desc:'安排时间、说明价格、处理付款',
+  aiRoleZh:'询问价格和预约事宜的乘客',
+  systemPrompt:`You are an English-speaking cruise passenger asking about scheduling follow-up sessions and pricing. You're value-conscious and will ask about packages and what's included. Respond in TWO sections separated ONLY by "---SPLIT---":
+Section 1: Stay in character (1-3 sentences).
+Section 2: JSON — if errors: {"ok":false,"original":"phrase","corrected":"better","tip":"中文说明"} — if fine: {"ok":true,"msg":"鼓励"}`,
+  vocab:[
+    {en:'availability',zh:'空档/可预约时间',ex:'Let me check our availability.'},
+    {en:'time slot',zh:'时间段',ex:'Do you have a morning time slot?'},
+    {en:'book in advance',zh:'提前预约',ex:'I\'d recommend booking in advance.'},
+    {en:'package deal',zh:'套餐',ex:'We offer a three-session package deal.'},
+    {en:'single session',zh:'单次疗程',ex:'A single session is $80.'},
+    {en:'membership',zh:'会员',ex:'We don\'t have a membership on the ship.'},
+    {en:'discount',zh:'折扣',ex:'Any discount for multiple sessions?'},
+    {en:'promotional offer',zh:'优惠活动',ex:'We have a special promotional offer.'},
+    {en:'charge to room',zh:'记到房间账单',ex:'I can charge it to your room.'},
+    {en:'sea pass card',zh:'游轮通行卡',ex:'Just use your sea pass card.'},
+    {en:'credit card',zh:'信用卡',ex:'We accept all major credit cards.'},
+    {en:'receipt',zh:'收据',ex:'Here is your receipt.'},
+    {en:'invoice',zh:'发票',ex:'I\'ll email you the invoice.'},
+    {en:'cancellation policy',zh:'取消政策',ex:'Our cancellation policy is 24 hours.'},
+    {en:'24-hour notice',zh:'24小时提前通知',ex:'We require 24-hour notice to cancel.'},
+    {en:'no-show fee',zh:'爽约费',ex:'There is a no-show fee of $20.'},
+    {en:'reschedule',zh:'改约',ex:'Can I reschedule my appointment?'},
+    {en:'waitlist',zh:'候补名单',ex:'I can put you on the waitlist.'},
+    {en:'port day',zh:'靠港日',ex:'We\'re usually busier on port days.'},
+    {en:'full schedule',zh:'满档',ex:'Tomorrow afternoon is fully booked.'},
+    {en:'confirm',zh:'确认',ex:'Let me confirm your booking.'},
+    {en:'reminder',zh:'提醒',ex:'I\'ll send a reminder to your cabin.'},
+    {en:'gratuity',zh:'小费',ex:'A 18% gratuity is included.'},
+    {en:'value for money',zh:'物有所值',ex:'It\'s great value for money.'},
+    {en:'investment',zh:'投资/值得花的钱',ex:'Think of it as an investment in your health.'},
+  ],
+  dialogues:[
+    {title:'对话一：询问价格和套餐',lines:[
+      {r:'you',en:'I\'m glad the session was helpful! Would you like to book a follow-up before you go?',zh:'很高兴疗程有帮助！您离开前想预约下次吗？'},
+      {r:'them',en:'Yes, I think so. Can you tell me about the pricing first?',zh:'是的，我想。能先告诉我价格吗？'},
+      {r:'you',en:'Of course. A single session is $90. We also have a package of three sessions for $240, which saves you $30. And a five-session package for $375 — saving $75.',zh:'当然。单次疗程是90美元。我们也有三次疗程套餐，240美元，能省30美元。还有五次疗程套餐，375美元——能省75美元。'},
+      {r:'them',en:'Hmm. How many days do we have left on the cruise?',zh:'嗯。游轮还有几天行程？'},
+      {r:'you',en:'You have four days left, so the three-session package would fit perfectly — one session every other day.',zh:'您还有四天，所以三次疗程套餐非常合适——每隔一天一次。'},
+      {r:'them',en:'That sounds good actually. Can I charge it to my room?',zh:'这听起来不错。可以记到我的房间账单吗？'},
+      {r:'you',en:'Absolutely. I just need your sea pass card. I\'ll also print a receipt for your records.',zh:'当然可以。我只需要您的游轮通行卡。我也会打印一张收据供您保存。'},
+      {r:'them',en:'Perfect. Can I do my next one tomorrow morning?',zh:'很好。我能明天早上来做下一次吗？'},
+      {r:'you',en:'Let me check… yes, I have 10:00 am and 11:30 am available. Which works better for you?',zh:'让我查一下……是的，我有上午10点和11点半的空档。哪个对您更方便？'},
+    ]},
+    {title:'对话二：需要改约的患者',lines:[
+      {r:'them',en:'Hi, I have an appointment tomorrow at 2 pm, but our shore excursion got extended. Can I change it?',zh:'嗨，我明天下午2点有预约，但我们的岸上游览延长了。我能改约吗？'},
+      {r:'you',en:'Of course — thank you for letting us know ahead of time. When would work better for you?',zh:'当然可以——感谢您提前通知我们。什么时间对您更方便？'},
+      {r:'them',en:'Could we do tomorrow evening instead? Maybe around 5 or 6?',zh:'我们能改到明天晚上吗？也许5点或6点左右？'},
+      {r:'you',en:'I have 5:30 pm available tomorrow. Shall I put you down for that?',zh:'我明天下午5点半有空档。要帮您预约那个时间吗？'},
+      {r:'them',en:'Yes please. Is there a fee for changing the appointment?',zh:'好的，麻烦了。改约有费用吗？'},
+      {r:'you',en:'No fee at all when you give us more than 24 hours notice — which you did. We only charge for no-shows or very last-minute cancellations.',zh:'提前超过24小时通知我们的话完全免费——您做到了。我们只对爽约或非常临时的取消收费。'},
+      {r:'them',en:'Good to know. See you tomorrow at 5:30 then!',zh:'好知道。那明天5点半见！'},
+    ]},
+    {title:'对话三：询问是否值得多次疗程',lines:[
+      {r:'them',en:'To be honest, I\'m not sure if I should pay for more sessions. I only have three days left.',zh:'说实话，我不确定是否应该花钱做更多疗程。我只剩三天了。'},
+      {r:'you',en:'That\'s a fair concern. Can I ask — how did your shoulder feel after yesterday\'s session compared to before?',zh:'这是个合理的顾虑。我能问一下——与之前相比，昨天疗程后您的肩膀感觉怎么样？'},
+      {r:'them',en:'Actually… noticeably better. I could lift my arm higher this morning without as much pain.',zh:'实际上……明显好多了。今天早上我能把手臂抬得更高，疼痛也少多了。'},
+      {r:'you',en:'That\'s real progress after just one session. The effects are cumulative — a second and third session will build significantly on that improvement.',zh:'这是仅仅一次疗程后的真实进步。效果是累积的——第二次和第三次疗程将在这个改善基础上大幅提升。'},
+      {r:'them',en:'You make a good point. I\'ll go ahead and do the three-session package then.',zh:'您说得有道理。那我就买三次疗程套餐吧。'},
+      {r:'you',en:'Excellent decision. I\'ll also put together some simple exercises you can continue at home to maintain the results after the cruise.',zh:'非常明智的决定。我还会为您整理一些简单的练习，让您在游轮结束后回家也能继续保持效果。'},
+    ]},
+  ]
+},
+{
+  num:'07', title:'与船员日常闲聊', titleEn:'Casual Crew Chat', desc:'打招呼、聊工作、聊生活',
+  aiRoleZh:'来自英国的英语母语船员同事',
+  systemPrompt:`You are a British crew member working in food & beverage on the same cruise ship. You're friendly and chatty. Chat casually about ship life, ports, shore leave, contracts, missing home, funny passenger stories, etc. Use natural relaxed British English. Respond in TWO sections separated ONLY by "---SPLIT---":
+Section 1: Stay in character. Chat naturally (1-3 sentences), feel free to ask questions back.
+Section 2: JSON — if errors: {"ok":false,"original":"phrase","corrected":"better","tip":"中文说明"} — if fine: {"ok":true,"msg":"鼓励"}`,
+  vocab:[
+    {en:'shore leave',zh:'上岸休假',ex:'I\'m taking shore leave tomorrow.'},
+    {en:'port of call',zh:'停靠港',ex:'What\'s our next port of call?'},
+    {en:'dock',zh:'停靠/码头',ex:'We dock at 8 am.'},
+    {en:'itinerary',zh:'行程',ex:'I love this itinerary.'},
+    {en:'contract',zh:'合同期',ex:'My contract ends in two months.'},
+    {en:'crew deck',zh:'船员甲板',ex:'See you on the crew deck later.'},
+    {en:'turnaround day',zh:'乘客换班日',ex:'Turnaround day is exhausting.'},
+    {en:'homesick',zh:'想家的',ex:'I\'m feeling a bit homesick.'},
+    {en:'seasick',zh:'晕船的',ex:'Were you seasick in the storm?'},
+    {en:'sea legs',zh:'适应海上生活的能力',ex:'I\'ve got my sea legs now.'},
+    {en:'off duty',zh:'下班/休息',ex:'I\'m off duty after 6 pm.'},
+    {en:'on watch',zh:'值班',ex:'I\'m on watch until noon.'},
+    {en:'rotation',zh:'轮班',ex:'What\'s your rotation this week?'},
+    {en:'the bridge',zh:'驾驶舱',ex:'The captain\'s up on the bridge.'},
+    {en:'galley',zh:'船上厨房',ex:'The galley is chaos right now.'},
+    {en:'embarkation',zh:'上船',ex:'Embarkation was a nightmare today.'},
+    {en:'disembarkation',zh:'下船',ex:'Disembarkation starts at 7 am.'},
+    {en:'crew mess',zh:'船员餐厅',ex:'Meet me at the crew mess at noon.'},
+    {en:'time zone',zh:'时区',ex:'I keep losing track of time zones.'},
+    {en:'internet',zh:'网络',ex:'The internet here is terrible.'},
+    {en:'video call',zh:'视频通话',ex:'I had a video call with my mum.'},
+    {en:'rough seas',zh:'颠簸的海况',ex:'We had rough seas last night.'},
+    {en:'smooth sailing',zh:'一帆风顺',ex:'It\'s been smooth sailing today.'},
+    {en:'tip pool',zh:'小费共享池',ex:'Tips go into the pool.'},
+    {en:'paycheck',zh:'工资',ex:'Payday is next Friday.'},
+  ],
+  dialogues:[
+    {title:'对话一：谈下一个停靠港',lines:[
+      {r:'you',en:'Hey! Are you going ashore when we dock in Santorini tomorrow?',zh:'嘿！我们明天停靠圣托里尼的时候你要上岸吗？'},
+      {r:'them',en:'Try and stop me! I\'ve been counting down for two weeks. Have you been before?',zh:'想拦都拦不住！我已经倒数了两周了。你去过吗？'},
+      {r:'you',en:'Yes, once. The views are incredible. How much shore leave do you have?',zh:'去过，一次。那里的景色令人叹为观止。你有多少上岸假期？'},
+      {r:'them',en:'Only five hours, which is never enough. But better than nothing! Any tips?',zh:'只有五小时，永远不够用。但总比没有好！有什么建议吗？'},
+      {r:'you',en:'Skip the main tourist area in the morning — too crowded. Take the cable car up to Oia and walk along the caldera path.',zh:'早上不要去主要旅游区——太拥挤了。坐缆车到伊亚，沿着火山口小路走走。'},
+      {r:'them',en:'Ooh, good shout. Want to go together? We could grab a coffee with a view.',zh:'哦，好建议。想一起去吗？我们可以找个有景色的地方喝杯咖啡。'},
+      {r:'you',en:'I\'d love that! What time does your shift end?',zh:'我很乐意！你什么时候下班？'},
+      {r:'them',en:'I\'m off at 9 am. Meet at the gangway at quarter past?',zh:'我9点下班。9点15分在舷梯那见？'},
+    ]},
+    {title:'对话二：聊合同和思家',lines:[
+      {r:'them',en:'You look tired today. Everything alright?',zh:'你今天看起来很疲惫。一切都好吗？'},
+      {r:'you',en:'I\'m okay. Just missing home a bit. My sister had a baby last week and I couldn\'t be there.',zh:'我还好。只是有点想家。我妹妹上周生了宝宝，我没能在场。'},
+      {r:'them',en:'Oh no, that\'s really tough. I\'m sorry. How much longer is your contract?',zh:'哦不，这真的很难受。我很遗憾。你的合同还有多久？'},
+      {r:'you',en:'Three more months. Then I\'m going home for six weeks before the next contract.',zh:'还有三个月。然后我要回家休六周再开始下一份合同。'},
+      {r:'them',en:'I\'ve got two months left myself. Honestly, I don\'t know how you do it. This is only my first contract.',zh:'我自己还有两个月。说实话，我不知道你是怎么做到的。这只是我的第一份合同。'},
+      {r:'you',en:'It gets easier, I promise. The first contract is always the hardest. You start to find your sea legs and make real friends.',zh:'我保证会越来越容易的。第一份合同总是最难的。你会开始适应海上生活，结交真正的朋友。'},
+      {r:'them',en:'That\'s actually quite reassuring. What do you do when you\'re feeling homesick?',zh:'这确实让人宽慰。当你想家的时候你怎么做？'},
+      {r:'you',en:'Video calls help a lot. And honestly, keeping busy is the best cure. When I\'m focused on my work, I forget to be sad.',zh:'视频通话帮了很大忙。说实话，保持忙碌是最好的良药。当我专注于工作时，我就忘了悲伤。'},
+    ]},
+    {title:'对话三：轻松闲聊搞笑经历',lines:[
+      {r:'them',en:'You will not believe what happened to me today. A guest actually asked me if the ship stops at night.',zh:'你不会相信今天发生在我身上的事。一位客人真的问我船晚上停不停驶。'},
+      {r:'you',en:'Ha! Classic. Did you manage to keep a straight face?',zh:'哈！经典。你忍住没笑出来吗？'},
+      {r:'them',en:'Barely! I said "no sir, we keep going" as seriously as I could. What about you — any interesting characters this week?',zh:'勉强！我尽量严肃地说"不，先生，我们继续行驶"。你呢——这周有什么有趣的人吗？'},
+      {r:'you',en:'Yes! A guest yesterday asked if the needles would affect their Wi-Fi signal.',zh:'有！昨天一位客人问针灸会不会影响他们的Wi-Fi信号。'},
+      {r:'them',en:'Oh my goodness, that\'s brilliant. What did you even say?',zh:'天哪，这太绝了。你说了什么？'},
+      {r:'you',en:'I told him the needles improve the flow of Qi, not data, but his internet might feel faster if he\'s more relaxed.',zh:'我告诉他针灸改善的是气的流动，不是数据，但如果他更放松了，网络可能会感觉快一些。'},
+      {r:'them',en:'That\'s the perfect answer! You should write a book about this job.',zh:'这是完美的回答！你应该写一本关于这份工作的书。'},
+    ]},
+  ]
+},
+{
+  num:'08', title:'应急 & 特殊情况', titleEn:'Emergency & Special Cases', desc:'顾客不适、沟通误解、应对投诉',
+  aiRoleZh:'治疗中突感不适或有特殊情况的乘客',
+  systemPrompt:`You are an English-speaking cruise passenger in an unexpected situation during or after acupuncture — either feeling dizzy mid-treatment, expressing strong fear, or having a complaint. React realistically. Respond in TWO sections separated ONLY by "---SPLIT---":
+Section 1: Stay in character. Express your situation or concern naturally (1-3 sentences).
+Section 2: JSON — if errors: {"ok":false,"original":"phrase","corrected":"better","tip":"中文说明"} — if fine: {"ok":true,"msg":"鼓励"}`,
+  vocab:[
+    {en:'dizzy',zh:'头晕的',ex:'I feel dizzy all of a sudden.'},
+    {en:'lightheaded',zh:'头脑发昏的',ex:'I\'m feeling a bit lightheaded.'},
+    {en:'nauseous',zh:'恶心的',ex:'I\'m starting to feel nauseous.'},
+    {en:'pale',zh:'脸色苍白的',ex:'You look a little pale.'},
+    {en:'sweating',zh:'出汗',ex:'I\'m suddenly sweating a lot.'},
+    {en:'heart racing',zh:'心跳加速',ex:'My heart feels like it\'s racing.'},
+    {en:'faint',zh:'晕厥/昏倒',ex:'I feel like I might faint.'},
+    {en:'vasovagal reaction',zh:'迷走神经反应',ex:'This is a vasovagal reaction.'},
+    {en:'remove the needles',zh:'取出针',ex:'I\'ll remove the needles right away.'},
+    {en:'recovery position',zh:'复苏体位',ex:'Turn onto your side — recovery position.'},
+    {en:'deep breathing',zh:'深呼吸',ex:'Focus on slow, deep breathing.'},
+    {en:'pulse',zh:'脉搏',ex:'Let me check your pulse.'},
+    {en:'blood pressure drop',zh:'血压下降',ex:'This may be a blood pressure drop.'},
+    {en:'allergic reaction',zh:'过敏反应',ex:'Any signs of allergic reaction?'},
+    {en:'hives',zh:'荨麻疹',ex:'Do you see any hives or redness?'},
+    {en:'medical officer',zh:'医疗官',ex:'I need to call the medical officer.'},
+    {en:'ship\'s doctor',zh:'船医',ex:'Let\'s get the ship\'s doctor.'},
+    {en:'stay calm',zh:'保持冷静',ex:'Please try to stay calm.'},
+    {en:'first aid',zh:'急救',ex:'I\'m trained in first aid.'},
+    {en:'concern',zh:'顾虑/担忧',ex:'I understand your concern.'},
+    {en:'complaint',zh:'投诉',ex:'I hear your complaint.'},
+    {en:'refund',zh:'退款',ex:'We can discuss a partial refund.'},
+    {en:'reassure',zh:'让…放心',ex:'Let me reassure you.'},
+    {en:'monitor',zh:'观察/监测',ex:'I\'d like to monitor you for a few minutes.'},
+    {en:'emergency number',zh:'紧急电话',ex:'I\'m calling the emergency number.'},
+  ],
+  dialogues:[
+    {title:'对话一：治疗中晕针',lines:[
+      {r:'them',en:'Excuse me… I\'m sorry, I feel really dizzy all of a sudden. And a bit nauseous.',zh:'打扰一下……对不起，我突然感到非常头晕。还有点恶心。'},
+      {r:'you',en:'Thank you for telling me right away. I\'m going to remove all the needles now — stay as still as you can.',zh:'感谢您立刻告诉我。我现在要取出所有的针——尽量保持不动。'},
+      {r:'them',en:'Okay… I\'m also sweating a lot. Is this serious?',zh:'好的……我也出了很多汗。这严重吗？'},
+      {r:'you',en:'You\'re going to be fine. This is called a vasovagal reaction — it\'s relatively common, especially for first-timers. All the needles are out. I need you to turn over slowly onto your back for me.',zh:'您会没事的。这叫做迷走神经反应——这相对常见，尤其是初次来的人。针都取出来了。我需要您慢慢翻身仰卧。'},
+      {r:'them',en:'Okay… my heart is beating really fast.',zh:'好的……我的心跳很快。'},
+      {r:'you',en:'That will settle in a moment. Focus on slow, deep breaths — in through your nose, out through your mouth. I\'m right here with you.',zh:'一会儿就会平稳的。专注于慢慢深呼吸——用鼻子吸气，用嘴呼出。我就在您旁边。'},
+      {r:'them',en:'Okay… I think it\'s getting a bit better already.',zh:'好的……我感觉好像已经好一点了。'},
+      {r:'you',en:'Good. I\'m going to check your pulse and get you some cold water. Please don\'t sit up yet — just lie still for a few minutes.',zh:'很好。我要检查一下您的脉搏，给您拿点冷水。请先不要坐起来——先安静躺几分钟。'},
+    ]},
+    {title:'对话二：顾客有强烈恐惧/要求停止',lines:[
+      {r:'them',en:'I\'m sorry but I can\'t do this. I need you to take the needles out right now. I\'m panicking.',zh:'对不起，我做不到。我需要您现在就取出针。我在恐慌。'},
+      {r:'you',en:'Of course — I\'m removing them right now. You\'re completely safe. There\'s no need to push through anything you\'re not comfortable with.',zh:'当然——我现在就取出来。您完全安全。没有必要勉强做任何您不舒服的事情。'},
+      {r:'them',en:'I thought I could handle it but I just couldn\'t. I feel terrible for wasting your time.',zh:'我以为我能承受，但我做不到。感觉很抱歉浪费了您的时间。'},
+      {r:'you',en:'Please don\'t feel bad at all. This happens, and it\'s absolutely okay. Your comfort and safety always come first. All the needles are out now — how do you feel?',zh:'请完全不要有这种感觉。这会发生，这完全没问题。您的舒适和安全始终是第一位的。现在针都取出来了——您感觉怎么样？'},
+      {r:'them',en:'A bit shaky, but relieved. I\'m sorry.',zh:'有点颤抖，但松了口气。对不起。'},
+      {r:'you',en:'Please stop apologizing — you\'ve done nothing wrong. Take your time. Would you like some water? We can talk about whether there\'s a more gradual approach that might work for you in the future.',zh:'请不要道歉——您什么都没做错。慢慢来。您想要点水吗？我们可以谈谈未来是否有更循序渐进的方式可能适合您。'},
+    ]},
+    {title:'对话三：顾客治疗后抱怨效果',lines:[
+      {r:'them',en:'I\'ve had three sessions now and honestly, I don\'t think it\'s working. My back is still the same.',zh:'我现在已经做了三次疗程，说实话，我认为没有效果。我的背部还是一样。'},
+      {r:'you',en:'I really appreciate you being honest with me. I\'m sorry the progress hasn\'t been as clear as we\'d hoped. Let\'s talk — can you tell me more specifically what you\'re feeling?',zh:'我非常感谢您对我坦诚。我很遗憾进展不像我们希望的那样明显。我们来谈谈——您能更具体地告诉我您的感受吗？'},
+      {r:'them',en:'It hurts just as much as before. If anything, maybe slightly less in the morning, but overall not much difference.',zh:'疼痛和之前一样。如果说有的话，早上可能稍微轻一点，但总体上没什么太大区别。'},
+      {r:'you',en:'That\'s actually meaningful progress — less morning pain is a real improvement. But I hear you — you were hoping for more. Let me reassess your treatment points today and try a slightly different approach.',zh:'这实际上是有意义的进步——晨起疼痛减轻是真正的改善。但我听到您了——您希望有更多改善。让我今天重新评估您的治疗穴位，尝试稍微不同的方法。'},
+      {r:'them',en:'Okay, I\'m willing to try one more time. But if I don\'t see more improvement, I\'d like a partial refund.',zh:'好的，我愿意再试一次。但如果我没看到更多改善，我希望得到部分退款。'},
+      {r:'you',en:'That\'s a completely reasonable request. Let\'s give this session everything we have, and if you\'re still not satisfied afterwards, I\'ll speak with my manager about options for you.',zh:'这是完全合理的要求。让我们在这次疗程中全力以赴，如果之后您仍然不满意，我会和我的经理谈谈您的选择。'},
+    ]},
+  ]
+},
+];
+
+let curSc = null, curTab = 'fc';
+let fcCards = [], fcIdx = 0, fcFlipped = false;
+let chatHistory = [];
+
+function getNB() { try { return JSON.parse(localStorage.getItem('errorWords') || '{}'); } catch(e){ return {}; } }
+function saveNB(nb) { localStorage.setItem('errorWords', JSON.stringify(nb)); }
+function addToNB(scIdx, vocabIdx) {
+  const nb = getNB();
+  const key = scIdx + '_' + vocabIdx;
+  if (!nb[key]) { nb[key] = { scIdx, vocabIdx }; saveNB(nb); }
+}
+function removeFromNB(scIdx, vocabIdx) {
+  const nb = getNB();
+  delete nb[scIdx + '_' + vocabIdx];
+  saveNB(nb);
+}
+
+function speak(text) {
+  window.speechSynthesis && window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-US'; u.rate = 0.88;
+  window.speechSynthesis && window.speechSynthesis.speak(u);
+}
+
+function renderHome() {
+  document.getElementById('homeGrid').innerHTML = SCENARIOS.map((s,i) =>
+    `<div class="sc-card" onclick="openSc(${i})">
+      <div class="sc-num">场景 ${s.num}</div>
+      <div class="sc-title">${s.title}</div>
+      <div class="sc-en">${s.titleEn}</div>
+      <div class="sc-desc">${s.desc}</div>
+    </div>`
+  ).join('');
+}
+
+function openSc(i) {
+  curSc = i;
+  const s = SCENARIOS[i];
+  show('scScr');
+  document.getElementById('backBtn').classList.add('on');
+  document.getElementById('hTitle').textContent = `${s.num}. ${s.title}`;
+  document.getElementById('scTitle').textContent = `${s.title}  ·  ${s.titleEn}`;
+  document.getElementById('scDesc').textContent = s.desc;
+  renderFC(i);
+  renderDlg(i);
+  resetChat(i);
+  switchTab('fc');
+}
+
+function goHome() {
+  show('homeScr');
+  document.getElementById('backBtn').classList.remove('on');
+  document.getElementById('hTitle').textContent = '🌊 游轮英语口语练习';
+}
+
+function openNB() {
+  show('nbScr');
+  document.getElementById('backBtn').classList.add('on');
+  document.getElementById('hTitle').textContent = '📒 错词本';
+  renderNBScreen();
+}
+
+function show(id) {
+  ['homeScr','scScr','nbScr'].forEach(s => {
+    document.getElementById(s).classList.toggle('on', s === id);
+  });
+}
+
+function switchTab(tab) {
+  curTab = tab;
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('on', t.dataset.tab === tab));
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('on', p.id === 'panel-' + tab));
+}
+
+/* FLASHCARD */
+function renderFC(i) {
+  const s = SCENARIOS[i];
+  fcCards = s.vocab.map((v, vi) => ({ ...v, vi }));
+  fcCards = fcCards.sort(() => Math.random() - 0.5);
+  fcIdx = 0; fcFlipped = false;
+  drawFC();
+}
+
+function drawFC() {
+  const panel = document.getElementById('panel-fc');
+  const total = fcCards.length;
+  if (fcIdx >= total) {
+    const nb = getNB();
+    const wrongCount = Object.keys(nb).filter(k => k.startsWith(curSc + '_')).length;
+    panel.innerHTML = `<div class="fc-progress"><div class="fc-prog-bar" style="width:100%"></div></div>
+      <div class="fc-done">
+        <h3>🎉 本场景词汇完成！</h3>
+        <p style="margin-bottom:1rem">${wrongCount > 0 ? `共 ${wrongCount} 个词已加入错词本，可继续复习。` : '表现很棒，没有错词！'}</p>
+        <button class="fc-restart" onclick="renderFC(${curSc})">重新练习</button>
+        <button class="fc-nb-btn" onclick="openNB()">查看错词本</button>
+      </div>`;
+    return;
+  }
+  const card = fcCards[fcIdx];
+  const pct = Math.round((fcIdx / total) * 100);
+  panel.innerHTML = `
+    <div class="fc-meta">
+      <span>${fcIdx + 1} / ${total}</span>
+      <span style="font-size:12px;color:#aaa">点击卡片翻转</span>
+    </div>
+    <div class="fc-progress"><div class="fc-prog-bar" style="width:${pct}%"></div></div>
+    <div class="fc-wrap">
+      <div class="fc-inner" id="fcInner" onclick="flipFC()">
+        <div class="fc-face fc-front">
+          <div class="fc-word">${card.en}</div>
+          <div class="fc-hint">点击查看中文意思</div>
+        </div>
+        <div class="fc-face fc-back">
+          <div class="fc-zh">${card.zh}</div>
+          <div class="fc-ex">"${card.ex}"</div>
+          <button class="fc-tts" onclick="event.stopPropagation();speak('${card.en.replace(/'/g,"\\'")}')">🔊 朗读</button>
+        </div>
+      </div>
+    </div>
+    <div class="fc-btns" id="fcBtns" style="display:none">
+      <button class="fc-wrong" onclick="markFC(false)">✗ 不认识</button>
+      <button class="fc-right" onclick="markFC(true)">✓ 认识了</button>
+    </div>`;
+  fcFlipped = false;
+}
+
+function flipFC() {
+  const inner = document.getElementById('fcInner');
+  const btns = document.getElementById('fcBtns');
+  if (!fcFlipped) {
+    inner.classList.add('flipped');
+    btns.style.display = 'flex';
+    fcFlipped = true;
+  }
+}
+
+function markFC(correct) {
+  if (!correct) addToNB(curSc, fcCards[fcIdx].vi);
+  fcIdx++;
+  drawFC();
+}
+
+/* DIALOGUE */
+function renderDlg(i) {
+  const s = SCENARIOS[i];
+  const panel = document.getElementById('panel-dlg');
+  let selHTML = s.dialogues.map((d, di) =>
+    `<button class="dlg-opt${di===0?' on':''}" onclick="showDlg(${i},${di})">${d.title}</button>`
+  ).join('');
+  panel.innerHTML = `<div class="dlg-sel">${selHTML}</div><div id="dlgLines"></div>`;
+  showDlg(i, 0);
+}
+
+function showDlg(si, di) {
+  const s = SCENARIOS[si];
+  document.querySelectorAll('.dlg-opt').forEach((b, i) => b.classList.toggle('on', i === di));
+  const d = s.dialogues[di];
+  document.getElementById('dlgLines').innerHTML = `<div class="dlg-list">${d.lines.map(l =>
+    `<div class="dlg-line">
+      <div class="dlg-role ${l.r}">${l.r === 'you' ? '🟢 你（针灸师）' : '🔵 对方（乘客/船员）'}</div>
+      <div class="dlg-en">${l.en}</div>
+      <div class="dlg-zh">${l.zh}</div>
+      <button class="dlg-tts" onclick="speak('${l.en.replace(/'/g,"\\'")}')">🔊 朗读</button>
+    </div>`
+  ).join('')}</div>`;
+}
+
+/* CHAT */
+function resetChat(i) {
+  chatHistory = [];
+  const s = SCENARIOS[i];
+  const msgs = document.getElementById('chatMsgs');
+  msgs.innerHTML = '';
+  document.getElementById('chatRoleInfo').innerHTML = `AI正在扮演：<strong>${s.aiRoleZh}</strong>。请你扮演针灸师，用英语开始对话。AI会纠正你的英语错误。`;
+  addSysMsg('场景开始！请用英语开口，AI 会回复并帮你纠错。');
+}
+
+function addSysMsg(t) {
+  const d = document.createElement('div');
+  d.className = 'msg-sys'; d.textContent = t;
+  document.getElementById('chatMsgs').appendChild(d);
+  scrollChat();
+}
+
+function addUserMsg(t) {
+  const d = document.createElement('div');
+  d.className = 'msg-user'; d.textContent = t;
+  document.getElementById('chatMsgs').appendChild(d);
+  scrollChat();
+}
+
+function addAIMsg(reply, correction) {
+  const wrap = document.createElement('div');
+  wrap.className = 'msg-ai-wrap';
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-ai';
+  bubble.textContent = reply;
+  wrap.appendChild(bubble);
+  const ttsBtn = document.createElement('button');
+  ttsBtn.className = 'ai-tts';
+  ttsBtn.textContent = '🔊 朗读回复';
+  ttsBtn.onclick = () => speak(reply);
+  wrap.appendChild(ttsBtn);
+  if (correction) {
+    const box = document.createElement('div');
+    if (correction.ok) {
+      box.className = 'correction ok';
+      box.innerHTML = `<div class="label">✅ 表达检查</div>${correction.msg}`;
+    } else {
+      box.className = 'correction err';
+      box.innerHTML = `<div class="label">📝 纠错建议</div>
+        <div class="orig">❌ "${correction.original}"</div>
+        <div class="fix">✅ "${correction.corrected}"</div>
+        <div class="tip">💡 ${correction.tip}</div>`;
+    }
+    wrap.appendChild(box);
+  }
+  document.getElementById('chatMsgs').appendChild(wrap);
+  scrollChat();
+}
+
+function scrollChat() {
+  const el = document.getElementById('chatMsgs');
+  el.scrollTop = el.scrollHeight;
+}
+
+async function sendChat() {
+  const inp = document.getElementById('chatIn');
+  const text = inp.value.trim();
+  if (!text || curSc === null) return;
+  const btn = document.getElementById('sendBtn');
+  btn.disabled = true;
+  inp.value = ''; autoH(inp);
+  addUserMsg(text);
+  chatHistory.push({ role: 'user', content: text });
+
+  const loading = document.createElement('div');
+  loading.className = 'msg-ai-wrap';
+  loading.innerHTML = '<div class="msg-ai" style="color:#aaa">正在思考…</div>';
+  document.getElementById('chatMsgs').appendChild(loading);
+  scrollChat();
+
+  try {
+    const s = SCENARIOS[curSc];
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${API_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'deepseek-chat',
+        messages: [
+          { role: 'system', content: s.systemPrompt },
+          ...chatHistory.slice(-12)
+        ],
+        stream: false,
+        max_tokens: 300,
+        temperature: 0.8
+      })
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    const raw = data.choices[0].message.content;
+    const parts = raw.split('---SPLIT---');
+    const charReply = parts[0].trim();
+    let correction = null;
+    if (parts[1]) {
+      try { correction = JSON.parse(parts[1].trim()); } catch(e) {}
+    }
+    chatHistory.push({ role: 'assistant', content: charReply });
+    loading.remove();
+    addAIMsg(charReply, correction);
+  } catch(e) {
+    loading.remove();
+    addSysMsg('⚠️ 连接失败：' + e.message + '。请检查网络或 API Key。');
+  }
+  btn.disabled = false;
+}
+
+function chatKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); }
+}
+function autoH(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 110) + 'px';
+}
+
+/* ERROR NOTEBOOK */
+function renderNBScreen() {
+  const nb = getNB();
+  const keys = Object.keys(nb);
+  const content = document.getElementById('nbContent');
+  if (keys.length === 0) {
+    content.innerHTML = '<div class="nb-empty">错词本是空的 🎉<br>在词汇闪卡中标记不认识的词，它们会出现在这里。</div>';
+    return;
+  }
+  const byScene = {};
+  keys.forEach(k => {
+    const { scIdx, vocabIdx } = nb[k];
+    if (!byScene[scIdx]) byScene[scIdx] = [];
+    byScene[scIdx].push(vocabIdx);
+  });
+  content.innerHTML = Object.keys(byScene).map(si => {
+    const s = SCENARIOS[si];
+    const words = byScene[si].map(vi => {
+      const v = s.vocab[vi];
+      const safeEn = v.en.replace(/'/g, "\\'");
+      return `<div class="nb-word">
+        <div class="nb-word-main">
+          <div class="nb-en">${v.en}</div>
+          <div class="nb-zh">${v.zh}</div>
+          <div class="nb-ex">"${v.ex}"</div>
+        </div>
+        <div class="nb-actions">
+          <button class="nb-tts" onclick="speak('${safeEn}')">🔊</button>
+          <button class="nb-del" onclick="delNBWord(${si},${vi})">删除</button>
+        </div>
+      </div>`;
+    }).join('');
+    return `<div class="nb-scenario">
+      <div class="nb-sc-title">场景 ${s.num} · ${s.title}</div>
+      ${words}
+    </div>`;
+  }).join('');
+}
+
+function delNBWord(si, vi) {
+  removeFromNB(si, vi);
+  renderNBScreen();
+}
+
+renderHome();
+</script>
+</body>
+</html>
